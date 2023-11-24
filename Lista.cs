@@ -34,6 +34,12 @@ namespace lista
         // Método para imprimir los elementos de la lista
         public void ImprimirLista()
         {
+            if (EstaVacia())
+            {
+                Console.WriteLine("La lista está vacía.");
+                return;
+            }
+
             Nodo actual = inicio;
 
             while (actual != null)
@@ -106,6 +112,11 @@ namespace lista
 
             for (int i = 0; i < posicion - 1; i++)
             {
+                if (actual == null)
+                {
+                    Console.WriteLine("Posición inválida");
+                    return;
+                }
                 actual = actual.Siguiente;
             }
 
@@ -155,10 +166,13 @@ namespace lista
         // Método para eliminar el primer elemento de la lista
         public void EliminarPrimero()
         {
-            if (inicio != null)
+            if (EstaVacia())
             {
-                inicio = inicio.Siguiente;
+                Console.WriteLine("La lista está vacía. No hay elementos para eliminar.");
+                return;
             }
+
+            inicio = inicio.Siguiente;
         }
 
         // Método para eliminar un elemento del medio de la lista
@@ -180,17 +194,23 @@ namespace lista
 
             for (int i = 0; i < posicion - 1; i++)
             {
+                if (actual == null)
+                {
+                    Console.WriteLine("Posición inválida");
+                    return;
+                }
                 actual = actual.Siguiente;
             }
 
-            actual.Siguiente = actual.Siguiente.Siguiente;
+            actual.Siguiente = actual.Siguiente?.Siguiente;
         }
 
         // Método para eliminar el último elemento de la lista
         public void EliminarUltimo()
         {
-            if (inicio == null)
+            if (EstaVacia())
             {
+                Console.WriteLine("La lista está vacía. No hay elementos para eliminar.");
                 return;
             }
 
@@ -215,6 +235,7 @@ namespace lista
         {
             if (inicio == null)
             {
+                Console.WriteLine("La lista está vacía");
                 return;
             }
 
@@ -234,6 +255,10 @@ namespace lista
             if (actual.Siguiente != null)
             {
                 actual.Siguiente = actual.Siguiente.Siguiente;
+            }
+            else
+            {
+                Console.WriteLine("El perro no se encuentra en la lista");
             }
         }
 

@@ -8,14 +8,29 @@ namespace lista
 {
     public class Nodo
     {
-        public Perro DatosPerro { get; set; }
-        public Nodo Siguiente { get; set; }
+        private Perro _DatosPerro;
+        private Nodo _Siguiente;
 
-
-        public Nodo(Perro datosPerro)
+        public Nodo()
         {
-            DatosPerro = datosPerro;
-            Siguiente = null;
+            _Siguiente = null;
+        }
+        public Nodo(Perro perro, Nodo siguiente=null)
+        {
+            DatosPerro = perro;
+            _Siguiente = null;
+        }
+
+        public Perro DatosPerro
+        {
+            get { return _DatosPerro; }
+            set { _DatosPerro = value; }
+        }
+
+        public Nodo Siguiente
+        {
+            get { return _Siguiente; }
+            set { _Siguiente = value; }
         }
     }
 }
